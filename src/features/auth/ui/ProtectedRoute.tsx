@@ -1,5 +1,4 @@
-'use client';
-
+"use client";
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 import { useAuth } from '../lib';
@@ -10,7 +9,7 @@ export function ProtectedRoute({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     if (!isLoading && !isAuthenticated) {
-      router.push('/login');
+      router.push("/login");
     }
   }, [isLoading, isAuthenticated, router]);
 
@@ -23,4 +22,4 @@ export function ProtectedRoute({ children }: { children: React.ReactNode }) {
   }
 
   return <>{children}</>;
-} 
+}

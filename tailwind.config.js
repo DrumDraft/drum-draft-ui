@@ -20,7 +20,14 @@ const config = {
     },
   },
   darkMode: "class",
-  plugins: [heroui()],
+  plugins: [
+    heroui({
+      themes: {
+        light: {},
+        dark: {},
+      },
+    }),
+  ],
 };
 
 module.exports = config;

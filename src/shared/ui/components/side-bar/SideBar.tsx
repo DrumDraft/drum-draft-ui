@@ -1,31 +1,51 @@
-import React from 'react';
+import { ChildrenProp, ClassNameProp } from "@/shared/types";
+import { cn } from "@heroui/theme";
+import React from "react";
+import { HandleVertical } from "../handle/HandleVertical";
+import { sidebar, sidebarContent, sidebarResizer } from "./sidebar.styles";
 
-interface SideBarProps {}
+interface SidebarProps extends ChildrenProp, ClassNameProp {
+  minWidth?: number | string;
+  maxWidth?: number | string;
+  isOpen?: boolean;
+  setIsOpen?: (isOpen: boolean) => void;
+  locked?: boolean;
+}
 
-const SideBar = ({ theme, width, isOpen }) => ({
-  position: "fixed",
-  top: 0,
-  left: 0,
-  height: "100vh",
-  width: isOpen ? width : 0,
-  backgroundColor: theme.palette.background.paper,
-  borderRight: `1px solid ${theme.palette.divider}`,
-  transition: theme.transitions.create("width", {
-    easing: theme.transitions.easing.sharp,
-    duration: theme.transitions.duration.enteringScreen,
-  }),
-  overflowX: "hidden",
-  zIndex: theme.zIndex.drawer,
-});
-
-export const SideBar: React.FC<SideBarProps> = ({
+export const Sidebar: React.FC<SidebarProps> = ({
   children,
+  className,
+  minWidth = 80,
+  maxWidth = 240,
   isOpen = true,
-  width = 240,
+  setIsOpen,
+  locked = false,
 }) => {
+  const isControlled = typeof setIsOpen === "function";
+
+  const [internalOpen, setInternalOpen] = React.useState(isOpen);
+
+  const actualIsOpen = isControlled ? isOpen! : internalOpen;
+
+  const toggleSidebar = () => {
+    if (locked) return;
+
+    if (isControlled) {
+      setIsOpen?.(!actualIsOpen);
+    } else {
+      setInternalOpen((prev) => !prev);
+    }
+  };
+
   return (
-    <SideBarContainer width={width} isOpen={isOpen}>
-      {children}
-    </SideBarContainer>
+    <div
+      className={cn(sidebar(), className)}
+      style={{ width: actualIsOpen ? maxWidth : minWidth }}
+    >
+      <div className={sidebarContent()}>{children}</div>
+      <div className={sidebarResizer()}>
+        {locked ? null : <HandleVertical onClick={toggleSidebar} />}
+      </div>
+    </div>
   );
 };

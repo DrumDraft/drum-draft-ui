@@ -1,6 +1,3 @@
-export interface Viewer {
-  id: number;
-  email: string;
-  name: string;
-  isActive: boolean;
-}
+import { User } from './user';
+
+export interface Viewer extends User {}

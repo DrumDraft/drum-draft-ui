@@ -1,4 +1,4 @@
-import { NextResponse } from 'next/server';
+import { NextResponse } from "next/server";
 
 import type { NextRequest } from "next/server";
 
@@ -6,7 +6,7 @@ import type { NextRequest } from "next/server";
 const publicRoutes = ["/login", "/register"];
 
 // Список защищенных маршрутов
-const protectedRoutes = ["/profile"];
+const protectedRoutes = ["/profile", "/admin", "/library", "/settings"];
 
 export const config = {
   matcher: [
@@ -40,8 +40,7 @@ export async function middleware(req: NextRequest) {
   }
 
   // Получаем токен из cookie
-  const accessToken = req.cookies.get("accessToken")?.value;
-  const refreshToken = req.cookies.get("accessToken")?.value;
+  const accessToken = req.cookies.get("access_token")?.value;
 
   // Если токена нет, редиректим на страницу логина
   if (!accessToken) {

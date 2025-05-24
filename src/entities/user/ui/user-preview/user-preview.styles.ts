@@ -1,14 +1,14 @@
-import { tv } from 'tailwind-variants';
+import { tv } from "tailwind-variants";
 
 export const userPreview = tv({
   base: "p-0 w-full h-auto rounded-2xl flex items-center justify-start flex-row gap-4 group duration-250",
   variants: {
     size: {
-      xs: "gap-2",
-      sm: "gap-2",
-      md: "gap-4",
-      lg: "gap-6",
-      xl: "gap-6",
+      xs: "gap-1",
+      sm: "gap-1",
+      md: "gap-2",
+      lg: "gap-4",
+      xl: "gap-4",
     },
   },
   defaultVariants: {
@@ -17,7 +17,7 @@ export const userPreview = tv({
 });
 
 export const userPreviewInfo = tv({
-  base: "flex flex-col items-start",
+  base: "flex flex-col items-start justify-between h-full",
   variants: {
     size: {
       xs: "text-sm",
@@ -36,11 +36,11 @@ export const userPreviewName = tv({
   base: "text-medium font-bold line-clamp-1",
   variants: {
     size: {
-      xs: "text-md",
-      sm: "text-md",
-      md: "text-lg",
-      lg: "text-2xl",
-      xl: "text-2xl",
+      xs: "text-md/3",
+      sm: "text-md/3",
+      md: "text-lg/5",
+      lg: "text-2xl/7",
+      xl: "text-2xl/7",
     },
   },
   defaultVariants: {
@@ -49,14 +49,14 @@ export const userPreviewName = tv({
 });
 
 export const userPreviewEmail = tv({
-  base: "",
+  base: "line-clamp-1",
   variants: {
     size: {
-      xs: "text-xs",
-      sm: "text-xs",
-      md: "text-sm",
-      lg: "text-base",
-      xl: "text-base",
+      xs: "text-xs/2",
+      sm: "text-xs/2",
+      md: "text-sm/4",
+      lg: "text-base/6",
+      xl: "text-base/6",
     },
   },
   defaultVariants: {

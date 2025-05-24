@@ -1,13 +1,14 @@
 "use client";
 
 import type { ThemeProviderProps } from "next-themes";
-import { AuthProvider } from '@/features/auth/ui/AuthProvider';
-import { ToastProvider } from '@heroui/react';
-import { HeroUIProvider } from '@heroui/system';
-import { ThemeProvider as NextThemesProvider } from 'next-themes';
-import { useRouter } from 'next/navigation';
-import { PrimeReactProvider } from 'primereact/api';
-import * as React from 'react';
+import { AuthProvider } from "@/features/auth/ui/AuthProvider";
+import { PageContextProvider } from "@/shared/ui/page/PageContextProvider";
+import { ToastProvider } from "@heroui/react";
+import { HeroUIProvider } from "@heroui/system";
+import { ThemeProvider as NextThemesProvider } from "next-themes";
+import { useRouter } from "next/navigation";
+import { PrimeReactProvider } from "primereact/api";
+import * as React from "react";
 
 export interface ProvidersProps {
   children: React.ReactNode;
@@ -30,8 +31,10 @@ export function Providers({ children, themeProps }: ProvidersProps) {
       <NextThemesProvider {...themeProps}>
         <PrimeReactProvider>
           <AuthProvider>
-            <ToastProvider placement="top-right" />
-            {children}
+            <PageContextProvider>
+              <ToastProvider placement="top-right" />
+              {children}
+            </PageContextProvider>
           </AuthProvider>
         </PrimeReactProvider>
       </NextThemesProvider>

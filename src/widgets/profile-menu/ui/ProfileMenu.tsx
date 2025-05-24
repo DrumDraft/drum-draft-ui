@@ -1,7 +1,7 @@
 "use client";
-import { Popover, PopoverContent, PopoverTrigger } from '@heroui/react';
-import { ProfileMenuCard } from './ProfileMenuCard';
-import { ProfileMenuTrigger } from './ProfileMenuTrigger';
+import { Popover, PopoverContent, PopoverTrigger } from "@heroui/react";
+import { ProfileMenuCard } from "./ProfileMenuCard";
+import { ProfileMenuTrigger } from "./ProfileMenuTrigger";
 
 export const ProfileMenu = () => {
   return (

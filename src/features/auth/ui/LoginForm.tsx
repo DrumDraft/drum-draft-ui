@@ -1,9 +1,9 @@
 "use client";
 
-import { useLogin } from '@/features/auth/lib/useLogin';
-import { PasswordInput } from '@/shared/ui/components/form';
-import { Button } from '@heroui/button';
-import { Input } from '@heroui/input';
+import { useLogin } from "@/features/auth/lib/useLogin";
+import { PasswordInput } from "@/shared/ui/form";
+import { Button } from "@heroui/button";
+import { Input } from "@heroui/input";
 
 export const LoginForm = () => {
   const { register, handleSubmit, errors, isSubmitting, isValid } = useLogin();

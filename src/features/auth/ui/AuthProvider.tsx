@@ -1,10 +1,10 @@
 "use client";
 
-import { ChildrenProp } from '@/shared/types';
-import { useEffect, useState } from 'react';
-import { getCurrentUser, login, logout } from '../api';
-import { AuthContextValue, AuthState } from '../model';
-import { AuthContext } from '../model/context';
+import { ChildrenProp } from "@/shared/types";
+import { useEffect, useState } from "react";
+import { getCurrentUser, login, logout } from "../api";
+import { AuthContextValue, AuthState } from "../model";
+import { AuthContext } from "../model/context";
 
 export const AuthProvider: React.FC<ChildrenProp> = ({ children }) => {
   const [state, setState] = useState<AuthState>({
@@ -22,7 +22,7 @@ export const AuthProvider: React.FC<ChildrenProp> = ({ children }) => {
     return getCurrentUser()
       .then((user) =>
         updateState({
-          user,
+          user: user.data,
           isLoading: false,
         })
       )

@@ -1,8 +1,8 @@
-import { Viewer } from '@/entities/user/types';
-import axiosClient from '@/shared/api/axios/axios.client';
-import { createServerClient } from '@/shared/api/axios/axios.server';
-import { ApiResponse, MessageDto, RegisterDto } from '@/shared/types';
-import { LoginDto } from '../model/login.dto';
+import { Viewer } from "@/entities/user/types";
+import axiosClient from "@/shared/api/axios/axios.client";
+import { createServerClient } from "@/shared/api/axios/axios.server";
+import { ApiResponse, MessageDto, RegisterDto } from "@/shared/types";
+import { LoginDto } from "../model/login.dto";
 
 export const register = (params: RegisterDto) =>
   axiosClient.post<ApiResponse<MessageDto>>("/auth/register", params);
@@ -18,10 +18,7 @@ export async function refresh(cookieHeader?: string) {
 }
 
 export const getCurrentUser = async () => {
-  const { data } = await axiosClient.get<ApiResponse<Viewer>>("/auth/me");
-  if (data.ok) {
-    return data.data;
-  }
+  const response = await axiosClient.get<ApiResponse<Viewer>>("/auth/me");
 
-  return null;
+  return response.data;
 };

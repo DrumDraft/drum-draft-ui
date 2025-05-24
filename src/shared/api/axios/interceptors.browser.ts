@@ -1,5 +1,5 @@
-import { refresh } from '@/features/auth/api/services';
-import axiosClient from './axios.client';
+import { refresh } from "@/features/auth/api/services";
+import axiosClient from "./axios.client";
 
 import type { AxiosError, InternalAxiosRequestConfig } from "axios";
 
@@ -14,9 +14,6 @@ function resolveQueue(err: any, value?: unknown) {
   queue.forEach((p) => (err ? p.reject(err) : p.resolve(value)));
   queue = [];
 }
-
-/* ---- request: Ничего не добавляем, cookie уже в withCredentials ---- */
-axiosClient.interceptors.request.use((cfg) => cfg);
 
 /* ---- response: 401 → refresh → повтор запроса ---- */
 axiosClient.interceptors.response.use(
@@ -49,3 +46,5 @@ axiosClient.interceptors.response.use(
     }
   }
 );
+
+axiosClient.interceptors.request.use((cfg) => cfg);

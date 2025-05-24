@@ -1,6 +1,6 @@
 "use client";
 import { ChildrenProp } from "@/shared/types";
-import { Sidebar } from "@/shared/ui/components/side-bar/Sidebar";
+import { Sidebar } from "@/shared/ui/side-bar/Sidebar";
 import { useMemo } from "react";
 import { useState } from "react";
 import { NavBarContext } from "../model/context";

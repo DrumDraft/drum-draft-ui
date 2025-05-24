@@ -1,53 +1,50 @@
-# Next.js & HeroUI Template
+# Drum Draft UI
 
-This is a template for creating applications using Next.js 14 (app directory) and HeroUI (v2).
+Drum Draft UI - современное веб-приложение для создания и редактирования ударных партий, созданное с использованием Next.js и React.
 
-[Try it on CodeSandbox](https://githubbox.com/heroui-inc/heroui/next-app-template)
+## Возможности
 
-## Technologies Used
+- Редактор паттернов ударных инструментов с визуальным интерфейсом
+- Библиотека сохраненных паттернов
+- Поддержка различных размеров (включая специальную обработку для 6/8)
+- Музыкальная нотация с использованием abcjs
 
-- [Next.js 14](https://nextjs.org/docs/getting-started)
-- [HeroUI v2](https://heroui.com/)
-- [Tailwind CSS](https://tailwindcss.com/)
-- [Tailwind Variants](https://tailwind-variants.org)
-- [TypeScript](https://www.typescriptlang.org/)
-- [Framer Motion](https://www.framer.com/motion/)
-- [next-themes](https://github.com/pacocoursey/next-themes)
+## Технологии
 
-## How to Use
+- [Next.js 15](https://nextjs.org/) - React фреймворк с серверными компонентами
+- [React 18](https://react.dev/) - библиотека пользовательского интерфейса
+- [TypeScript](https://www.typescriptlang.org/) - типизированный JavaScript
+- [Tailwind CSS](https://tailwindcss.com/) - утилитарный CSS-фреймворк
+- [HeroUI](https://heroui.com/) - компоненты интерфейса
+- [Zustand](https://github.com/pmndrs/zustand) - управление состоянием
+- [abcjs](https://www.abcjs.net/) - отображение музыкальной нотации
 
-### Use the template with create-next-app
+## Установка и запуск
 
-To create a new project based on this template using `create-next-app`, run the following command:
+1. Клонируйте репозиторий:
 
-```bash
-npx create-next-app -e https://github.com/heroui-inc/next-app-template
-```
+   ```bash
+   git clone https://your-repository-url.git
+   cd drum-draft-ui
+   ```
+2. Установите зависимости:
 
-### Install dependencies
+   ```bash
+   npm install
+   ```
+3. Запустите проект в режиме разработки:
 
-You can use one of them `npm`, `yarn`, `pnpm`, `bun`, Example using `npm`:
+   ```bash
+   npm run dev
+   ```
+4. Откройте [http://localhost:3000](http://localhost:3000) в браузере.
 
-```bash
-npm install
-```
+## Структура проекта
 
-### Run the development server
+Проект построен с использованием архитектуры, вдохновленной Feature-Sliced Design:
 
-```bash
-npm run dev
-```
-
-### Setup pnpm (optional)
-
-If you are using `pnpm`, you need to add the following code to your `.npmrc` file:
-
-```bash
-public-hoist-pattern[]=*@heroui/*
-```
-
-After modifying the `.npmrc` file, you need to run `pnpm install` again to ensure that the dependencies are installed correctly.
-
-## License
-
-Licensed under the [MIT license](https://github.com/heroui-inc/next-app-template/blob/main/LICENSE).
+- `/src/app` - страницы и роутинг Next.js
+- `/src/features` - функциональные модули (редактор паттернов, библиотека и др.)
+- `/src/entities` - бизнес-сущности приложения
+- `/src/widgets` - композиционные компоненты
+- `/src/shared` - переиспользуемые утилиты и компоненты

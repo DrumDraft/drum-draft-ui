@@ -1,6 +1,6 @@
-import { routes } from '@/shared/config/routes';
-import { Button } from '@heroui/button';
-import Link from 'next/link';
+import { routes } from "@/shared/config/routes";
+import { Button } from "@heroui/button";
+import Link from "next/link";
 
 export const NotFoundMessage: React.FC = () => {
   return (
@@ -16,12 +16,7 @@ export const NotFoundMessage: React.FC = () => {
       </div>
 
       <div className="flex gap-3 mt-8">
-        <Button
-          as={Link}
-          href={`/${routes.base}`}
-          variant="solid"
-          color="primary"
-        >
+        <Button as={Link} href={routes.base} variant="solid" color="primary">
           Вернуться на главную
         </Button>
       </div>

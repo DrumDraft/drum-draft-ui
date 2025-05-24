@@ -25,6 +25,7 @@
     "@react-aria/ssr": "3.9.8",
     "@react-aria/visually-hidden": "3.8.22",
     "@types/axios": "^0.14.4",
+    "abcjs": "^6.4.4",
     "axios": "^1.9.0",
     "clsx": "2.1.1",
     "framer-motion": "11.13.1",
@@ -37,7 +38,8 @@
     "primereact": "^10.9.5",
     "react": "18.3.1",
     "react-dom": "18.3.1",
-    "react-hook-form": "^7.56.4"
+    "react-hook-form": "^7.56.4",
+    "zustand": "^5.0.4"
   },
   "devDependencies": {
     "@eslint/compat": "1.2.8",

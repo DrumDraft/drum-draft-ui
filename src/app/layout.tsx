@@ -39,7 +39,7 @@ export default function RootLayout({
         )}
       >
         <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
-          <div className="relative flex flex-row h-screen">{children}</div>
+          {children}
         </Providers>
       </body>
     </html>

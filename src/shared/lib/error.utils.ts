@@ -1,6 +1,6 @@
-import { AxiosError } from 'axios';
-import { ApiError } from '../types';
-import { showErrorMessage } from './notification.utils';
+import { AxiosError } from "axios";
+import { ApiErrorResponse } from "../types";
+import { showErrorMessage } from "./notification.utils";
 
 export const handleError = (
   error: Error,
@@ -13,14 +13,19 @@ export const handleError = (
   showErrorMessage(params.title || "Ошибка", errorMessage);
 };
 
-export const getApiErrorMessage = (
-  err: unknown,
-  defaultMessage?: string
-): string => {
-  const message = (err as AxiosError<ApiError>).response?.data?.message;
-  if (message) {
-    return message;
+export const getApiErrorMessage = (err: unknown): string => {
+  if (err instanceof Error) {
+    return err.message;
   }
 
-  return defaultMessage ?? "Произошла неизвестная ошибка";
+  const message = (err as AxiosError<ApiErrorResponse>).response?.data?.message;
+  return message || "Произошла ошибка";
+};
+
+export const handleApiError = (
+  error: unknown,
+  fallbackMessage = "Произошла ошибка"
+): string => {
+  const errorMessage = getApiErrorMessage(error);
+  return errorMessage || fallbackMessage;
 };

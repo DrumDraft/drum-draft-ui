@@ -1,3 +1,5 @@
+import { LibraryPage } from "@/pages/library/ui/LibraryPage";
+
 export default function ProfilePage() {
-  return <div className="mx-auto"></div>;
+  return <LibraryPage />;
 }

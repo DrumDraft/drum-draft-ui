@@ -1,5 +1,5 @@
-import { SVGProps } from 'react';
-import { Size } from './size';
+import { SVGProps } from "react";
+import { Size } from "./size";
 
 export type ChildrenProp = {
   children?: React.ReactNode;
@@ -21,4 +21,12 @@ export interface SvgIconProps extends SVGProps<SVGSVGElement>, NumberSizeProp {}
 
 export interface ThemeProp {
   theme?: "light" | "dark";
+}
+
+export interface StartContentProp {
+  startContent?: React.ReactNode;
+}
+
+export interface EndContentProp {
+  endContent?: React.ReactNode;
 }

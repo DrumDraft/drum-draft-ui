@@ -1,4 +1,4 @@
-import { Logo } from "@/shared/ui/components/logo/Logo";
+import { Logo } from "@/shared/ui/logo/Logo";
 import { Divider } from "@heroui/divider";
 
 export const Header = () => {

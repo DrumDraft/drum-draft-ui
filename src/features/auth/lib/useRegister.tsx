@@ -2,6 +2,7 @@ import { register as registerApi } from '@/features/auth/api/services';
 import { getApiErrorMessage } from '@/shared/lib/error.utils';
 import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
+import { useAuth } from './useAuth';
 
 interface RegisterFormData {
   email: string;
@@ -11,6 +12,8 @@ interface RegisterFormData {
 
 export const useRegister = () => {
   const router = useRouter();
+
+  const { checkAuth } = useAuth();
 
   const {
     register,
@@ -30,6 +33,8 @@ export const useRegister = () => {
     try {
       await registerApi({ email, name, password });
       router.push("/");
+
+      checkAuth();
     } catch (err) {
       setError("root", {
         message: getApiErrorMessage(

@@ -1,9 +1,9 @@
 "use client";
 
-import { PasswordInput } from '@/shared/ui/components/form';
-import { Button } from '@heroui/button';
-import { Input } from '@heroui/input';
-import { useRegister } from '../lib';
+import { PasswordInput } from "@/shared/ui/form";
+import { Button } from "@heroui/button";
+import { Input } from "@heroui/input";
+import { useRegister } from "../lib";
 
 export const RegisterForm = () => {
   const { register, handleSubmit, errors, isSubmitting, isValid } =

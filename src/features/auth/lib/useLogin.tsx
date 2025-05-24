@@ -1,7 +1,8 @@
-import { login } from '@/features/auth/api/services';
-import { getApiErrorMessage } from '@/shared/lib/error.utils';
-import { useRouter } from 'next/navigation';
-import { useForm } from 'react-hook-form';
+import { login } from "@/features/auth/api/services";
+import { getApiErrorMessage } from "@/shared/lib/error.utils";
+import { useRouter } from "next/navigation";
+import { useForm } from "react-hook-form";
+import { useAuth } from "./useAuth";
 
 interface LoginFormData {
   email: string;
@@ -10,6 +11,8 @@ interface LoginFormData {
 
 export const useLogin = () => {
   const router = useRouter();
+
+  const { checkAuth } = useAuth();
 
   const {
     register,
@@ -27,14 +30,13 @@ export const useLogin = () => {
     try {
       await login({ email, password });
       router.push("/");
+
+      checkAuth();
     } catch (err) {
       console.log(err);
 
       setError("root", {
-        message: getApiErrorMessage(
-          err,
-          "Произошла неизвестная ошибка при входе"
-        ),
+        message: getApiErrorMessage(err),
       });
     }
   };

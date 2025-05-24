@@ -1,5 +1,5 @@
 "use client";
-import { Logo } from "@/shared/ui/components/logo/Logo";
+import { Logo } from "@/shared/ui/logo/Logo";
 import Link from "next/link";
 import { useNavBarContext } from "../model/context";
 

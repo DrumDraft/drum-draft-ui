@@ -1,13 +1,13 @@
-import { SizeProp } from '@/shared/types';
-import { Skeleton } from '@heroui/react';
-import { UserProp } from '../../types';
-import { ProfileIcon } from '../profile-icon';
+import { SizeProp } from "@/shared/types";
+import { Skeleton } from "@heroui/react";
+import { UserProp } from "../../types";
+import { ProfileIcon } from "../profile-icon";
 import {
   userPreview,
   userPreviewEmail,
   userPreviewInfo,
   userPreviewName,
-} from './user-preview.styles';
+} from "./user-preview.styles";
 
 export interface UserPreviewProps extends SizeProp, UserProp {
   info?: { name?: boolean; email?: boolean } | null;

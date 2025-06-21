@@ -1,10 +1,11 @@
-import { Beat } from "../model";
-import { SignatureMeasure } from "./index";
+import { Beat } from '../model';
 
 export interface Pattern {
-  id: string;
-  signatureBeats: number;
-  signatureMeasure: SignatureMeasure;
+  id: number | null;
+  signatureBits: number;
+  signatureMeasure: number;
   beats: Beat[];
   tags: string[];
+  createdAt: Date | null;
+  updatedAt: Date | null;
 }

@@ -18,9 +18,12 @@ export const NavBarRoot: React.FC<ChildrenProp> = ({ children }) => {
 
   return (
     <NavBarContext.Provider value={value}>
-      <Sidebar isOpen={isOpen} setIsOpen={setIsOpen} maxWidth={280}>
-        {children}
-      </Sidebar>
+      <Sidebar
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
+        maxWidth={280}
+        content={children}
+      ></Sidebar>
     </NavBarContext.Provider>
   );
 };

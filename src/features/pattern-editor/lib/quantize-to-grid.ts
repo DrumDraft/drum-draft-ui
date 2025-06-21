@@ -1,4 +1,5 @@
 import { TimeSignature } from '@/entities/pattern/types';
+import { GridResolutionDivisions } from '../constants';
 import { GridResolution } from '../types/grid-resolution';
 
 /**
@@ -18,19 +19,11 @@ export function quantizeToGrid(
 ): number {
   const normalized = ((position % 1) + 1) % 1;
 
-  const baseDivisions: Record<GridResolution, number> = {
-    "1/4": 4,
-    "1/8": 8,
-    "1/16": 16,
-    "1/32": 32,
-    "1/8t": 12,
-    "1/16t": 24,
-  };
-
   const { numerator, denominator } = timeSignature;
-  const base = baseDivisions[resolution];
 
-  const subdivisions = (base * numerator) / denominator;
+  const gridResolutionDivisions = GridResolutionDivisions[resolution];
+
+  const subdivisions = (gridResolutionDivisions * numerator) / denominator;
 
   const rawIndex = Math.round(normalized * subdivisions);
 

@@ -1,10 +1,21 @@
-import { ChildrenProp, ClassNameProp } from "@/shared/types";
-import { cn } from "@heroui/theme";
-import React from "react";
-import { HandleVertical } from "../handle/HandleVertical";
-import { sidebar, sidebarContent, sidebarResizer } from "./sidebar.styles";
+import { ClassNameProp } from '@/shared/types';
+import { cn } from '@heroui/theme';
+import React, { useMemo } from 'react';
+import { HandleVertical } from '../handle/HandleVertical';
+import { sidebar, sidebarContent, sidebarResizer } from './sidebar.styles';
 
-interface SidebarProps extends ChildrenProp, ClassNameProp {
+export interface SidebarState {
+  isOpen: boolean;
+  toggleSidebar: () => void;
+  width: number | string;
+  minWidth: number | string;
+  maxWidth: number | string;
+  locked: boolean;
+}
+
+interface SidebarProps extends ClassNameProp {
+  children?: React.ReactNode | ((state: SidebarState) => React.ReactNode);
+  content?: React.ReactNode;
   minWidth?: number | string;
   maxWidth?: number | string;
   isOpen?: boolean;
@@ -12,8 +23,9 @@ interface SidebarProps extends ChildrenProp, ClassNameProp {
   locked?: boolean;
 }
 
-export const Sidebar: React.FC<SidebarProps> = ({
+const SidebarComponent: React.FC<SidebarProps> = ({
   children,
+  content,
   className,
   minWidth = 80,
   maxWidth = 240,
@@ -27,7 +39,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
 
   const actualIsOpen = isControlled ? isOpen! : internalOpen;
 
-  const toggleSidebar = () => {
+  const toggleSidebar = React.useCallback(() => {
     if (locked) return;
 
     if (isControlled) {
@@ -35,17 +47,45 @@ export const Sidebar: React.FC<SidebarProps> = ({
     } else {
       setInternalOpen((prev) => !prev);
     }
-  };
+  }, [locked, isControlled, setIsOpen, actualIsOpen]);
+
+  const sidebarState: SidebarState = useMemo(
+    () => ({
+      isOpen: actualIsOpen,
+      toggleSidebar,
+      width: actualIsOpen ? maxWidth : minWidth,
+      minWidth,
+      maxWidth,
+      locked,
+    }),
+    [actualIsOpen, toggleSidebar, maxWidth, minWidth, locked]
+  );
+
+  const renderContent = useMemo(() => {
+    if (typeof children === "function") {
+      return children(sidebarState);
+    }
+    if (children) {
+      return children;
+    }
+    return content;
+  }, [children, sidebarState, content]);
+
+  const sidebarStyle = useMemo(
+    () => ({
+      width: actualIsOpen ? maxWidth : minWidth,
+    }),
+    [actualIsOpen, maxWidth, minWidth]
+  );
 
   return (
-    <div
-      className={cn(sidebar(), className)}
-      style={{ width: actualIsOpen ? maxWidth : minWidth }}
-    >
-      <div className={sidebarContent()}>{children}</div>
+    <div className={cn(sidebar(), className)} style={sidebarStyle}>
+      <div className={sidebarContent()}>{renderContent}</div>
       <div className={sidebarResizer()}>
         {locked ? null : <HandleVertical onClick={toggleSidebar} />}
       </div>
     </div>
   );
 };
+
+export const Sidebar = React.memo(SidebarComponent);

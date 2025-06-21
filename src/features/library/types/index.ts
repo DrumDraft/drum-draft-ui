@@ -1,1 +1,1 @@
-export * from "./library-store.type";
+export * from "./pattern-library-store.type";

@@ -1,1 +1,1 @@
-export * from "./Sidebar";
+export { Sidebar, type SidebarState } from "./Sidebar";

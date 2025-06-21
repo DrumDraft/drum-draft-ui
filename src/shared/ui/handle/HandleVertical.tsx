@@ -12,6 +12,7 @@ export const HandleVertical: React.FC<HandleProps> = ({
         onClick={onClick}
         disabled={disabled}
         style={style}
+        aria-label="Вертикальный маркер"
       ></button>
     </div>
   );

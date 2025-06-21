@@ -1,4 +1,4 @@
-import { DrumType } from "../types";
+import { DrumType } from '../types';
 
 export const DRUM_MAPPING_STRING = `%%MIDI drummap D   44 % pedal hi-hat
 %%MIDI drummap E   36 % bass drum 1
@@ -23,6 +23,7 @@ export const DRUM_MAPPING_STRING = `%%MIDI drummap D   44 % pedal hi-hat
 %%MIDI drummap ^a  81 % open triangle
 %MIDI channel 10
 `;
+
 export const ABC_DRUM_NOTES = ["D", "F", "A", "c", "d", "e", "f", "g", "a"];
 
 export const DRUM_ALIAS_STRING = `U: X=+style=x+\nU: O=+open+\nU: H=+style=harmonic+\n`;

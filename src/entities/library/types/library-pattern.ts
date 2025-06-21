@@ -1,7 +1,7 @@
-import { Pattern } from "@/entities/pattern/types";
+import { Pattern } from '@/entities/pattern/types';
 
 export interface LibraryPattern {
-  id: string;
+  id: number;
   pattern: Pattern;
   title: string;
   isPublic: boolean;
